@@ -12,23 +12,36 @@
 <body>
 	<!-- Accordion -->
 	<div class="accordion">
-		<button class="bg-gray-200 hover:bg-gray-300 p-3 w-1/2 text-left accordion-btn active">Section 1</button>
-		<div class="p-3 w-1/2 accordion-panel">
-			This is text for section 1.
+		<h2 class="p-3 font-bold">Accordion</h2>
+		<div class="accordion-panel">
+			<button class="transition block bg-gray-200 hover:bg-gray-300 p-3 w-1/2 text-left accordion-button">Section 1</button>
+			<div class="p-3 w-1/2 hidden accordion-content">
+				This is text for section 1.
+			</div>
 		</div>
 
-		<button class="bg-gray-200 hover:bg-gray-300 p-3 w-1/2 text-left accordion-btn">Section 2</button>
-		<div class="p-3 w-1/2 accordion-panel">
-			This is text for section 2.
+		<div class="accordion-panel">
+			<button class="transition block bg-gray-200 hover:bg-gray-300 p-3 w-1/2 text-left accordion-button">Section 2</button>
+			<div class="p-3 w-1/2 hidden accordion-content">
+				This is text for section 2.
+			</div>
 		</div>
 
-		<button class="bg-gray-200 hover:bg-gray-300 p-3 w-1/2 text-left accordion-btn">Section 3</button>
-		<div class="p-3 w-1/4 accordion-panel">
-			This is text for section 3.
+		<div class="accordion-panel">
+			<button class="transition block bg-gray-200 hover:bg-gray-300 p-3 w-1/2 text-left accordion-button">Section 3</button>
+			<div class="p-3 w-1/2 hidden accordion-content">
+				This is text for section 3.
+			</div>
 		</div>
 	</div>
 	<script>
-
+		const buttons = document.getElementsByClassName("accordion-button");
+		for (const button of buttons) {
+			button.addEventListener("click", function() {
+				const content = this.nextElementSibling;
+				content.classList.toggle("hidden");
+			});
+		}
 	</script>
 </body>
 </html>
