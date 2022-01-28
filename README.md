@@ -1,1 +1,1 @@
-### I rebuild many boostrap components using tailwind css. 
+### This is an exercise to rebuild bootstrap's components using tailwind css. 
