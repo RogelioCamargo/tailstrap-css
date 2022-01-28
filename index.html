@@ -12,7 +12,7 @@
 <body>
 	<!-- Accordion -->
 	<div class="accordion">
-		<h2 class="p-3 font-bold">Accordion</h2>
+		<h2 class="py-3 font-bold">Accordion</h2>
 		<div class="accordion-panel">
 			<button class="transition block bg-gray-200 hover:bg-gray-300 p-3 w-1/2 text-left accordion-button">Section 1</button>
 			<div class="p-3 w-1/2 hidden accordion-content">
@@ -36,11 +36,61 @@
 	</div>
 	<script>
 		const buttons = document.getElementsByClassName("accordion-button");
+
 		for (const button of buttons) {
 			button.addEventListener("click", function() {
 				const content = this.nextElementSibling;
 				content.classList.toggle("hidden");
 			});
+		}
+	</script>
+
+	<!-- Carousel -->
+	<div class="carousel w-1/2 mt-5 relative">
+		<h2 class="py-3 font-bold">Carousel</h2>
+		<div class="carousel-slide">
+			<div class="bg-red-500 h-64 p-3 text-middle"></div>
+		</div>
+		<div class="carousel-slide">
+			<div class="bg-blue-500 h-64 p-3 text-middle"></div>
+		</div>
+		<div class="carousel-slide">
+			<div class="bg-green-500 h-64 p-3 text-middle"></div>
+		</div>
+		<!-- Controls -->
+		<button 
+			class="previous-button text-2xl text-gray-200 hover:text-white pl-3"
+			onclick="nextSlide(-1)">
+			&#10094;
+		</button>
+		<button 
+			class="forward-button text-2xl text-gray-200 hover:text-white pr-3"
+			onclick="nextSlide(1)">
+			&#10095;
+		</button>
+		<!-- Dots -->
+		<div class="absolute bottom-6 right-2/4">
+			<span class="inline-block h-2 w-2 bg-gray-200 rounded-full"></span>
+			<span class="inline-block h-2 w-2 bg-gray-200 rounded-full mx-1"></span>
+			<span class="inline-block h-2 w-2 bg-gray-200 rounded-full"></span>
+		</div>
+	</div>
+	<script>
+		let current = 1;
+		getSlide(current);
+
+		function nextSlide(index) {
+			getSlide(current += index);
+		}
+
+		function getSlide(index) {
+			const slides = document.getElementsByClassName("carousel-slide");
+			if  (index > slides.length) current = 1;
+			if (index < 1) current = slides.length;
+			for (const slide of slides) 
+				slide.style.display = "none";
+			
+			slides[current - 1].style.display = "block";
 		}
 	</script>
 </body>

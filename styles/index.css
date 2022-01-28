@@ -3,3 +3,12 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+
+.previous-button, .forward-button {
+	position: absolute;
+  top: 50%;
+}
+
+.forward-button {
+	right: 0;
+}
