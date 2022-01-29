@@ -70,9 +70,9 @@
 		</button>
 		<!-- Dots -->
 		<div class="absolute bottom-6 right-2/4">
-			<span class="inline-block h-2 w-2 bg-gray-200 rounded-full"></span>
-			<span class="inline-block h-2 w-2 bg-gray-200 rounded-full mx-1"></span>
-			<span class="inline-block h-2 w-2 bg-gray-200 rounded-full"></span>
+			<span class="carousel-dot inline-block h-2 w-2 rounded-full"></span>
+			<span class="carousel-dot inline-block h-2 w-2 rounded-full mx-1"></span>
+			<span class="carousel-dot inline-block h-2 w-2 rounded-full"></span>
 		</div>
 	</div>
 	<script>
@@ -85,11 +85,17 @@
 
 		function getSlide(index) {
 			const slides = document.getElementsByClassName("carousel-slide");
+			const dots = document.getElementsByClassName("carousel-dot");
+
 			if  (index > slides.length) current = 1;
 			if (index < 1) current = slides.length;
 			for (const slide of slides) 
 				slide.style.display = "none";
+			for (const dot of dots)
+				dot.classList.add("bg-gray-300");
 			
+			dots[current - 1].classList.remove("bg-gray-300");	
+			dots[current - 1].classList.add("bg-white");
 			slides[current - 1].style.display = "block";
 		}
 	</script>
