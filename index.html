@@ -10,6 +10,33 @@
 	<title>Tailwind Components</title>
 </head>
 <body>
+	<!-- Navbar -->
+	<div class="navbar">
+		<h2 class="my-3 font-bold">Navbar</h2>
+		<nav class="bg-blue-600 lg:w-3/4 lg:flex lg:justify-between p-5 text-white">
+			<div class="flex justify-between">
+				<a href="#" class="font-bold">Brand</a>
+				<button id="menu-button" class="lg:hidden">Menu</button>
+			</div>
+			<ul id="menu-items" class="hidden mt-2 lg:mt-0 lg:flex lg:items-center">
+				<li>
+					<a href="#">Home</a>
+				</li>
+				<li class="my-2 lg:my-0 lg:mx-3">
+					<a href="#">Link</a>
+				</li>
+				<li>Dropdown</li>
+			</ul>
+		</nav>
+	</div>
+	<script>
+		const menuButton = document.getElementById("menu-button");
+		menuButton.addEventListener("click", function() {
+			const menuItems = document.getElementById("menu-items");
+			menuItems.classList.toggle("hidden");
+		});
+	</script>
+
 	<!-- Accordion -->
 	<div class="accordion">
 		<h2 class="my-3 font-bold">Accordion</h2>
