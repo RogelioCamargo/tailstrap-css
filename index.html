@@ -14,21 +14,21 @@
 	<div class="accordion">
 		<h2 class="my-3 font-bold">Accordion</h2>
 		<div class="accordion-panel">
-			<button class="transition w-full md:w-1/2 block bg-gray-200 hover:bg-gray-300 p-3 text-left accordion-button">Section 1</button>
+			<button class="transition w-full md:w-1/2 block bg-gray-200 lg:hover:bg-gray-300 p-3 text-left accordion-button">Section 1</button>
 			<div class="p-3 w-full md:w-1/2 hidden accordion-content">
 				This is text for section 1.
 			</div>
 		</div>
 
 		<div class="accordion-panel">
-			<button class="transition w-full md:w-1/2 block bg-gray-200 hover:bg-gray-300 p-3 text-left accordion-button">Section 2</button>
+			<button class="transition w-full md:w-1/2 block bg-gray-200 lg:hover:bg-gray-300 p-3 text-left accordion-button">Section 2</button>
 			<div class="p-3 w-full md:w-1/2 hidden accordion-content">
 				This is text for section 2.
 			</div>
 		</div>
 
 		<div class="accordion-panel">
-			<button class="transition w-full md:w-1/2 block bg-gray-200 hover:bg-gray-300 p-3 text-left accordion-button">Section 3</button>
+			<button class="transition w-full md:w-1/2 block bg-gray-200 lg:hover:bg-gray-300 p-3 text-left accordion-button">Section 3</button>
 			<div class="p-3 w-full md:w-1/2 hidden accordion-content">
 				This is text for section 3.
 			</div>
@@ -41,6 +41,7 @@
 			button.addEventListener("click", function() {
 				const content = this.nextElementSibling;
 				content.classList.toggle("hidden");
+				this.classList.toggle("bg-gray-300");
 			});
 		}
 	</script>
@@ -107,7 +108,7 @@
 		<h2 class="my-3 font-bold">Dropdown</h2>
 		<button 
 			id="dropdown-button"
-			class="bg-gray-200 p-3 hover:bg-gray-300 focus:border-2 focus:border-gray-400">Dropdown Button</button>
+			class="w-40 bg-green-500 text-white p-3 hover:bg-green-700 focus:border-2 focus:border-gray-400">Dropdown Button</button>
 		<ul id="dropdown-menu" class="hidden w-40 border-2 py-1">
 			<li class="dropdown-menu-item hover:bg-gray-200 px-3 py-2">Option 1</li>
 			<li class="dropdown-menu-item hover:bg-gray-200 px-3 py-2">Option 2</li>
@@ -116,11 +117,11 @@
 	</div>
 	<script>
 		const dropdownButton = document.getElementById("dropdown-button");
-		dropdownButton.addEventListener("click", () => closeMenu());
+		dropdownButton.addEventListener("click", closeMenu);
 
 		const items = document.getElementsByClassName("dropdown-menu-item");
 		for (item of items)
-			item.addEventListener("click", () => closeMenu());
+			item.addEventListener("click", closeMenu);
 
 		function closeMenu() {
 			const menu = document.getElementById("dropdown-menu");
@@ -131,7 +132,7 @@
 	<!-- Modal -->
 	<div class="mt-5">
 		<h2 class="font-bold my-3">Modal</h2>
-		<button id="modal-button" class="bg-gray-200 p-3 hover:bg-gray-300 focus:border-2 focus:border-gray-400">Open Modal</button>
+		<button id="modal-button" class="w-40 bg-blue-500 text-white p-3 hover:bg-blue-700 focus:border-2 focus:border-gray-400">Open Modal</button>
 		<div id="modal" class="hidden fixed w-full h-full top-0 left-0">
 			<div class="modal-content mx-auto mt-10 bg-white max-w-xs md:max-w-md border-2 border-gray-200">
 				<div class="flex items-center justify-between p-3 border-b-2 border-gray-200">
@@ -151,20 +152,55 @@
 	</div>
 	<script>
 		const openModalButton = document.getElementById("modal-button");
-		openModalButton.addEventListener("click", () => toggleModal());
+		openModalButton.addEventListener("click", toggleModal);
 
 		const xButton = document.getElementById("modal-x");
-		xButton.addEventListener("click", () => toggleModal());
+		xButton.addEventListener("click", toggleModal);
 
 		const cancelButton = document.getElementById("modal-cancel");
-		cancelButton.addEventListener("click", () => toggleModal());
+		cancelButton.addEventListener("click", toggleModal);
 
 		const okayButton = document.getElementById("modal-okay");
-		okayButton.addEventListener("click", () => toggleModal());
+		okayButton.addEventListener("click", toggleModal);
 
 		function toggleModal() {
 			const modal = document.getElementById("modal");
 			modal.classList.toggle("hidden");
+		}
+	</script>
+
+	<!-- Offcanvas -->
+	<div class="mt-5">
+		<h2 class="my-3 font-bold">Offcanvas</h2>
+		<button id="open-offcanvas" class="w-40 bg-gray-200 p-3 hover:bg-gray-300 focus:border-2 focus:border-gray-400">Open Offcanvas</button>
+		<div id="offcanvas" class="hidden fixed w-full h-full top-0 left-0">
+			<div class="offcanvas-content bg-white h-full max-w-xs md:max-w-sm">
+				<div class="flex items-center justify-between p-3">
+					<h1 class="text-xl font-bold">Modal Title</h1>
+					<button id="offcanvas-x" class="text-3xl">&times;</button>
+				</div>
+				<p class="px-3 pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+					et dolore magna
+					aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					Duis
+					aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+					occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</div>
+		</div>
+	</div>
+	<script>
+		const openOffcanvas = document.getElementById("open-offcanvas");
+		openOffcanvas.addEventListener("click", toggleOffcanvas);
+
+		const xOffcanvas = document.getElementById("offcanvas-x");
+		xOffcanvas.addEventListener("click", toggleOffcanvas);
+		
+		const background = document.getElementById("offcanvas");
+		background.addEventListener("click", toggleOffcanvas);
+		
+		function toggleOffcanvas() {
+			const offcanvas = document.getElementById("offcanvas");
+			offcanvas.classList.toggle("hidden");
 		}
 	</script>
 	<div class="h-64"></div>
