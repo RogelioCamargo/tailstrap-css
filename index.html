@@ -108,7 +108,9 @@
 		<h2 class="my-3 font-bold">Dropdown</h2>
 		<button 
 			id="dropdown-button"
-			class="w-40 bg-green-500 text-white p-3 hover:bg-green-700 focus:border-2 focus:border-gray-400">Dropdown Button</button>
+			class="w-40 bg-green-500 text-white p-3 hover:bg-green-700 focus:border-2 focus:border-gray-400">
+			Open Dropdown
+		</button>
 		<ul id="dropdown-menu" class="hidden w-40 border-2 py-1">
 			<li class="dropdown-menu-item hover:bg-gray-200 px-3 py-2">Option 1</li>
 			<li class="dropdown-menu-item hover:bg-gray-200 px-3 py-2">Option 2</li>
@@ -133,7 +135,7 @@
 	<div class="mt-5">
 		<h2 class="font-bold my-3">Modal</h2>
 		<button id="modal-button" class="w-40 bg-blue-500 text-white p-3 hover:bg-blue-700 focus:border-2 focus:border-gray-400">Open Modal</button>
-		<div id="modal" class="hidden fixed w-full h-full top-0 left-0">
+		<div id="modal" class="hidden z-10 fixed w-full h-full top-0 left-0">
 			<div class="modal-content mx-auto mt-10 bg-white max-w-xs md:max-w-md border-2 border-gray-200">
 				<div class="flex items-center justify-between p-3 border-b-2 border-gray-200">
 					<h1 class="text-xl font-bold">Modal Title</h1>
@@ -173,7 +175,7 @@
 	<div class="mt-5">
 		<h2 class="my-3 font-bold">Offcanvas</h2>
 		<button id="open-offcanvas" class="w-40 bg-gray-200 p-3 hover:bg-gray-300 focus:border-2 focus:border-gray-400">Open Offcanvas</button>
-		<div id="offcanvas" class="hidden fixed w-full h-full top-0 left-0">
+		<div id="offcanvas" class="hidden z-20 fixed w-full h-full top-0 left-0">
 			<div class="offcanvas-content bg-white h-full max-w-xs md:max-w-sm">
 				<div class="flex items-center justify-between p-3">
 					<h1 class="text-xl font-bold">Modal Title</h1>
@@ -195,13 +197,36 @@
 		const xOffcanvas = document.getElementById("offcanvas-x");
 		xOffcanvas.addEventListener("click", toggleOffcanvas);
 		
-		const background = document.getElementById("offcanvas");
-		background.addEventListener("click", toggleOffcanvas);
-		
 		function toggleOffcanvas() {
 			const offcanvas = document.getElementById("offcanvas");
 			offcanvas.classList.toggle("hidden");
 		}
+	</script>
+
+	<!-- Popover -->
+	<div class="mt-5">
+		<h2 class="my-3 font-bold">Popover</h2>
+		<div class="relative">
+			<button id="open-popover" class="w-40 bg-red-500 text-white p-3 hover:bg-red-700 focus:border-2 focus:border-gray-400">
+				Open Popover
+			</button>
+			<div id="popover" class="hidden">
+				<div class="popover-content w-48 border-gray-300 border-2">
+					<div class="popover-header p-2 bg-gray-200 border-gray-300 border-b-2">
+						<span class="text-xs">Popover Header</span>
+					</div>
+					<p class="p-2 text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		const openPopover = document.getElementById("open-popover");
+		openPopover.addEventListener("click", function() {
+			const popoverContent = document.getElementById("popover");
+			popoverContent.classList.toggle("hidden");
+		});
 	</script>
 	<div class="h-64"></div>
 </body>
