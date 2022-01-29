@@ -107,20 +107,32 @@
 		<h2 class="my-3 font-bold">Dropdown</h2>
 		<button 
 			id="dropdown-button"
-			class="bg-gray-200 p-3">Dropdown Button</button>
+			class="bg-gray-200 p-3 hover:bg-gray-300 focus:border-2 focus:border-gray-400">Dropdown Button</button>
 		<ul id="dropdown-menu" class="hidden w-40 border-2 py-1">
-			<li class="hover:bg-gray-200 px-3 py-2">Option 1</li>
-			<li class="hover:bg-gray-200 px-3 py-2">Option 2</li>
-			<li class="hover:bg-gray-200 px-3 py-2">Option 3 </li>
+			<li class="dropdown-menu-item hover:bg-gray-200 px-3 py-2">Option 1</li>
+			<li class="dropdown-menu-item hover:bg-gray-200 px-3 py-2">Option 2</li>
+			<li class="dropdown-menu-item hover:bg-gray-200 px-3 py-2">Option 3 </li>
 		</ul>
 	</div>
 	<script>
 		const button = document.getElementById("dropdown-button");
-		button.addEventListener("click", function () {
+		button.addEventListener("click", () => closeMenu());
+
+		const items = document.getElementsByClassName("dropdown-menu-item");
+		for (item of items)
+			item.addEventListener("click", () => closeMenu());
+
+		function closeMenu() {
 			const menu = document.getElementById("dropdown-menu");
 			menu.classList.toggle("hidden");
-		});
+		}
 	</script>
+
+	<!-- Modal -->
+	<div class="modal mt-5">
+		<h2 class="font-bold my-3">Modal</h2>
+		<button class="bg-gray-200 p-3 hover:bg-gray-300 focus:border-2 focus:border-gray-400">Open Modal</button>
+	</div>
 	<div class="h-64"></div>
 </body>
 </html>
