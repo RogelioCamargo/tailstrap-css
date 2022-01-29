@@ -59,13 +59,13 @@
 		</div>
 		<!-- Controls -->
 		<button 
-			class="previous-button text-2xl text-gray-200 hover:text-white pl-3"
-			onclick="nextSlide(-1)">
+			id="previous-button"
+			class="text-2xl text-gray-200 hover:text-white pl-3">
 			&#10094;
 		</button>
 		<button 
-			class="forward-button text-2xl text-gray-200 hover:text-white pr-3"
-			onclick="nextSlide(1)">
+			id="forward-button"
+			class="text-2xl text-gray-200 hover:text-white pr-3">
 			&#10095;
 		</button>
 		<!-- Dots -->
@@ -79,11 +79,14 @@
 		let current = 1;
 		getSlide(current);
 
-		function nextSlide(index) {
-			getSlide(current += index);
-		}
+		const previousButton = document.getElementById("previous-button");
+		const forwardButton = document.getElementById("forward-button");
 
+		previousButton.addEventListener("click", () => getSlide(current -= 1));
+		forwardButton.addEventListener("click", () => getSlide(current += 1));
+		
 		function getSlide(index) {
+			console.log(index);
 			const slides = document.getElementsByClassName("carousel-slide");
 			const dots = document.getElementsByClassName("carousel-dot");
 
@@ -104,7 +107,8 @@
 	<div class="dropdown mt-5">
 		<h2 class="my-3 font-bold">Dropdown</h2>
 		<button 
-			class="dropdown-button bg-gray-200 p-3"
+			id="dropdown-button"
+			class="bg-gray-200 p-3"
 			onclick="toggleDropdown()">Dropdown Button</button>
 		<ul id="dropdown-menu" class="hidden w-40 border-2 py-1">
 			<li class="hover:bg-gray-200 px-3 py-2">Option 1</li>
@@ -113,10 +117,11 @@
 		</ul>
 	</div>
 	<script>
-		function toggleDropdown() {
+		const button = document.getElementById("dropdown-button");
+		button.addEventListener("click", function () {
 			const menu = document.getElementById("dropdown-menu");
 			menu.classList.toggle("hidden");
-		}
+		});
 	</script>
 	<div class="h-64"></div>
 </body>
